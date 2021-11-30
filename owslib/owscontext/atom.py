@@ -62,7 +62,7 @@ def parse_owc_content(content_node):
     child_elem = None
     if len(list(content_node)) > 0:
         child_elem = element_to_string(
-            list(content_node)[0], False)
+            list(content_node)[0], xml_declaration=False)
 
     content_dict = {
         "type": mimetype,
@@ -144,8 +144,7 @@ def parse_entry(entry_node):
         if len(list(val)) > 0:
             # xmltxt = etree.tostring(
             #     list(val)[0], encoding='utf8', method='xml')
-            xmltxt = element_to_string(
-                list(val)[0], False)
+            xmltxt = element_to_string(list(val)[0], xml_declaration=False)
             # TODO here parse geometry??
             # log.debug("entry: geometry %s :: %s", xmltxt, val)
             resource_base_dict.update({"geometry": xmltxt.decode('utf-8')})
@@ -451,8 +450,7 @@ def decode_atomxml(xml_string):
     val = feed_root.find(util.nspath_eval('georss:where', ns))
     if val is not None:
         if len(list(val)) > 0:
-            xmltxt = element_to_string(
-                list(val)[0], False)
+            xmltxt = element_to_string(list(val)[0], xml_declaration=False)
             # log.debug("geometry %s :: %s", xmltxt, val)
             context_base_dict['properties'].update({"bbox": xmltxt.decode('utf-8')})
 

@@ -23,7 +23,7 @@ def test_ogcapi_records_pygeoapi():
     assert paths['/collections/metadata:main'] is not None
 
     conformance = w.conformance()
-    assert len(conformance['conformsTo']) == 10
+    assert len(conformance['conformsTo']) == 12
 
     collections = w.collections()
     assert len(collections) > 0

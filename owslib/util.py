@@ -498,13 +498,13 @@ def element_to_string(element, encoding=None, xml_declaration=False):
             else:
                 output = etree.tostring(element, encoding=encoding, xml_declaration=True)
         else:
-            output = etree.tostring(element)
+            output = etree.tostring(element, encoding=encoding)
     else:
         if xml_declaration:
             output = '<?xml version="1.0" encoding="{}" standalone="no"?>\n{}'.format(
                 encoding, etree.tostring(element, encoding=encoding))
         else:
-            output = etree.tostring(element)
+            output = etree.tostring(element, encoding=encoding)
 
     return output
 
